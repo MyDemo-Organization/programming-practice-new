@@ -62,6 +62,7 @@ public class BinaryTreeNode {
         }
     }
 
+
     public static BinaryTreeNode createSampleTree() {
         BinaryTreeNode root = new BinaryTreeNode(1);
         BinaryTreeNode left = new BinaryTreeNode(2);

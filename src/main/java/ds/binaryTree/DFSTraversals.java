@@ -6,7 +6,7 @@ package ds.binaryTree;
  * @author Alimuddin Khan (aak5031@rit.edu)
  * @version on 10/23/17
  */
-public class Traversals {
+public class DFSTraversals {
 
     // Time Complexity : O(N)
     // Space Complexity : O(N)
