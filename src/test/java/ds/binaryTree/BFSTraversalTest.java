@@ -19,4 +19,9 @@ public class BFSTraversalTest {
         BFSTraversal.levelOrderTraversal(binaryTree);
     }
 
+    @Test
+    public void shouldTraverseBFSUsingQueue() {
+        BFSTraversal.bfsTraversalUsingQueue(binaryTree);
+    }
+
 }

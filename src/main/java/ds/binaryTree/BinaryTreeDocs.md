@@ -15,3 +15,11 @@ lombok plugin to be installed into your IDES
     - Usage: to delete the tree; to get postfix expression of an Expression tree.
 2. Level Order Traversal (BFS)
   - Using the Recursion
+  - Using the Queue
+3. Tree Measurement
+  - Height  : length of the longest path between the root and the leaf
+  - Diameter : Length of the longest path between any two leaves. It could be maximum of the following;
+    - diameter of the left sub tree
+    - diameter of the right sub tree
+    - longest path between the leaves that goes through the given root Node which would be;
+      - height of the left subtree + height of right subtree + 1
