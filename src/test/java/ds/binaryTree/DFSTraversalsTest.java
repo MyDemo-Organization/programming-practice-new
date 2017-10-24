@@ -12,10 +12,10 @@ import org.mockito.runners.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class DFSTraversalsTest {
+    private final BinaryTreeNode root =BinaryTreeNode.createSampleTree();
 
     @Test
     public void shouldDoInorderTraversal() {
-        final BinaryTreeNode root =BinaryTreeNode.createSampleTree();
         System.out.println("PRE-ORDER TRAVERSAL: ");
         DFSTraversals.preOrderTraversal(root);
         System.out.println("\nIN-ORDER TRAVERSAL: ");
@@ -23,4 +23,14 @@ public class DFSTraversalsTest {
         System.out.println("\nPOST-ORDER TRAVERSAL: ");
         DFSTraversals.postOrderTraversal(root);
     }
+
+    @Test
+    public void shouldDoDFSTraversalsUsingStack() {
+        DFSTraversals.preOrderUsingStack(root);
+        DFSTraversals.inOrderUsingStack(root);
+    }
+
+
+
+
 }

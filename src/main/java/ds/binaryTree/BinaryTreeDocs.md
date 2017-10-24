@@ -7,12 +7,75 @@ lombok plugin to be installed into your IDES
 ## Problems
 
 1. Depth First Traversals(DFS):
-  - PreOrder
-    - Usage : To get prefix expression; to create a copy of a tree
-  - InOrder
-    - Usage: In case of BST In order gives the values in *increasing order*. To get in decreasing order use **RRoL**
-  - PostOrder
-    - Usage: to delete the tree; to get postfix expression of an Expression tree.
+  - Recursive :
+    - PreOrder
+      - Usage : To get prefix expression; to create a copy of a tree
+    - InOrder
+      - Usage: In case of BST In order gives the values in *increasing order*. To get in decreasing order use **RRoL**
+    - PostOrder
+      - Usage: to delete the tree; to get postfix expression of an Expression tree.
+
+  - Iterative (Stack):
+     - Preorder -> standard solution is Pre order
+     - InOrder ->
+      - Here are the steps;
+        1. Go to the left most leaf Node
+          - Initialize current node to root.
+          - keep on assigning `cn = cn.left` until we get `cn.left == null`. At this point cn is nothing but the left most node.
+        2. Keep printing the `inOrderSuccessor` for all the nodes.
+          - **in order successor**: It is the left most node in the right subtree.
+          -
+
+          ```JAVA
+          // going to the in-order successor i.e. the left most node in the right subtree
+          cn = cn.right;
+
+          if (cn != null) {
+            stack.push(cn);
+            cn = cn.left;
+          }
+          ```
+          - Keep doing this while `cn == null && stack.isEmpty()`
+  - Iterative(without stack (Morris Traversal/Threaded binary tree))
+    - It is all about finding the in-order predecessor of the current Node and creating a thread between the current and that inorder predecessor by doing;
+    `pre.right = current`
+    - Algorithm:(NOTE: print happens only on the cn)
+      - **STEP1:** Start with `cn = root`and keep doing the STEP 2 until `cn != null`
+    - **STEP2:**
+      a) **Printing Step**
+      `cn.left == null`
+        -  We are at the left most node and just print it and go to its inOrderSuccessor;
+        ```JAVA
+        soout -> cn.data
+        cn = cn.right //in order successor created using the threaded right node
+        ```
+
+      b) **Thread creation and removal(+printing) step**
+      - Go to the in order predecessor of the cn (i.e. right most node in the left subtree)
+      - Find pre Algorithm:
+        - ```JAVA
+        pre = cn.left
+        while(pre.right != null && pre.right != cn)
+          pre = pre.right
+        ```
+      - Once you break the above while loop, there are two possibilities;
+
+        (i) `pre.right == null` (Thread creation Step)
+         - This means there is no thread present and you have to create the thread and go down below;
+         ```JAVA
+         pre.right = cn
+         cn = cn.left
+         ```
+
+       (ii)  `pre.right == cn` (Thread Removal Step)
+       - means there was actually the thread
+       - means pre is the left most node now
+       - print the cn and remove the thread.
+       ```JAVA
+       sout -> cn.data
+       pre.right = null // thread removal
+       ```
+
 2. Level Order Traversal (BFS)
   - Using the Recursion
   - Using the Queue
