@@ -62,7 +62,7 @@ public class BinaryTreeNode {
         }
     }
 
-    public static void main(String[] args) {
+    public static BinaryTreeNode createSampleTree() {
         BinaryTreeNode root = new BinaryTreeNode(1);
         BinaryTreeNode left = new BinaryTreeNode(2);
         BinaryTreeNode right = new BinaryTreeNode(3);
@@ -77,5 +77,7 @@ public class BinaryTreeNode {
         root.setLeft(left);
         root.setRight(right);
         root.printTree();
+        return root;
     }
+
 }
