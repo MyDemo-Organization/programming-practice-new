@@ -9,7 +9,6 @@ import java.util.Stack;
  * @version on 10/23/17
  */
 public class DFSTraversals {
-
     // Time Complexity : O(N)
     // Space Complexity : O(N)
     public static void preOrderTraversal(final BinaryTreeNode root) {
@@ -99,5 +98,44 @@ public class DFSTraversals {
         System.out.println();
 
     }
+
+    public static void inOrderWithoutStackAndWithoutRecursion(final BinaryTreeNode root) {
+        System.out.println("### DFS Inorder Without stack and without recursion ###");
+        if (root == null)
+            return;
+
+        BinaryTreeNode cn = root;
+        BinaryTreeNode pn;
+
+        while (cn != null) {
+            // Reached the Left most part of the tree/sub-tree
+            if (cn.getLeft() == null) {
+                System.out.print(cn.getData() + " ");
+                cn = cn.getRight();
+            } else {
+                // get the Inorder Predecessor i.e. the right most node in the left subtree
+                pn = cn.getLeft();
+
+                while (pn.getRight() != null && pn.getRight() != cn) {
+                    pn = pn.getRight();
+                }
+
+                // Thread creation
+                if (pn.getRight() == null) {
+                    pn.setRight(cn);
+                    cn = cn.getLeft();
+                } else {
+                    // Thread removal step
+                    System.out.print(cn.getData() + " ");
+                    cn = cn.getRight();
+                    pn.setRight(null); // remove the thread
+                }
+            }
+        }
+
+        System.out.println();
+    }
+
+
 
 }

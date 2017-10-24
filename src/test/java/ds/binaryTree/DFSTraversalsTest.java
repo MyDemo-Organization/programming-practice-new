@@ -28,9 +28,7 @@ public class DFSTraversalsTest {
     public void shouldDoDFSTraversalsUsingStack() {
         DFSTraversals.preOrderUsingStack(root);
         DFSTraversals.inOrderUsingStack(root);
+        DFSTraversals.inOrderWithoutStackAndWithoutRecursion(root);
     }
-
-
-
 
 }

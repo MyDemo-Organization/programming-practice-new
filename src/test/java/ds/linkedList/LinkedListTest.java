@@ -1,6 +1,5 @@
 package ds.linkedList;
 
-import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,6 @@ public class LinkedListTest {
 
     @Before
     public void setup() {
-        BasicConfigurator.configure();
         headNode = new LinkedListNode(1);
         LinkedListNode node2 = new LinkedListNode(2);
         LinkedListNode node3 = new LinkedListNode(3);

@@ -1,12 +1,9 @@
 package ds.linkedList;
 
-import lombok.extern.log4j.Log4j;
-import sun.awt.image.ImageWatched;
 
 /**
  * This class represents the linked list
  */
-@Log4j
 public class LinkedList {
     /**
      * Pushes the node in front of the head or before the head
