@@ -86,3 +86,33 @@ lombok plugin to be installed into your IDES
     - diameter of the right sub tree
     - longest path between the leaves that goes through the given root Node which would be;
       - height of the left subtree + height of right subtree + 1
+
+4. Tree construction from Traversal:
+  - we can build the tree from Traversal provided one of the Traversals is **in-order**
+  - Build the tree using the inorder + Preorder Traversal
+5. Max-width of a binary tree (could be added in the Tree Measurement)
+6. Print nodes at the k-distance from the root. (Looks like a sub-problem of the level order traversal.)
+7. Print Ancestor of Node in a given Tree
+8. Checkout if one tree is the Subtree of the other tree.
+9. Connect nodes at the same level (Bull shit!)
+
+
+
+## Solutions:
+
+### Tree construction from the Traversal:
+- we can build the tree from Traversal provided one of the Traversals is **in-order**
+- Build the tree using the inorder + Preorder Traversal.
+- Important facts:
+  - InorderTraversal:
+    - Root is at the center
+    - Left sub-array represents the left Subtree.
+    - Right sub-array represents the right subtree.
+  - PreOrderTraversal:
+    - Root is at the beginning:
+  - Algorithms:
+    - start the preIndex to 0
+    - add the root as pre[preIndex]
+    - find k => position of root in the InorderTraversal
+    - create the left sub tree with indice i,k-1
+    - create the right subtree with k+1,i

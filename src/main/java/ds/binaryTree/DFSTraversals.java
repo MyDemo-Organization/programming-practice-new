@@ -42,7 +42,7 @@ public class DFSTraversals {
     // Time Complexity : O(N)
     // Space Complexity : O(N)
     public static void preOrderUsingStack(final BinaryTreeNode root){
-        System.out.println("### Pre-Order using Stack###");
+        System.out.println("### Pre-Order using Stack ###");
         if (root == null)
             return;
 
@@ -67,7 +67,7 @@ public class DFSTraversals {
 
 
     public static void inOrderUsingStack(final BinaryTreeNode root) {
-        System.out.println("### In-order DFS traversal using Stack###");
+        System.out.println("### In-order DFS traversal using Stack ###");
         if (root == null)
             return;
 
@@ -135,7 +135,6 @@ public class DFSTraversals {
 
         System.out.println();
     }
-
 
 
 }
