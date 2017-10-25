@@ -97,7 +97,6 @@ lombok plugin to be installed into your IDES
 9. Connect nodes at the same level (Bull shit!)
 
 
-
 ## Solutions:
 
 ### Tree construction from the Traversal:
@@ -124,7 +123,27 @@ CreateBinaryTreeFromTraversals.java
 
 
 ### Max-width of a binary tree
+```JAVA
+MaxWidth.java
+```
 - By using modification of Level Order Traversal Using recursion:
   - One would be to go for the level order traversal and for each print out and for a given order record the number of
   prints which would present the number of elements present in that order.
   - Keep doing this for each order until you get the max of all
+- By using Queue
+  - Queue size in each iteration represent the number of Nodes present in the previous level
+
+###  Print nodes at the k-distance from the root
+```JAVA
+KDistantNodes.java
+```
+
+#### Print Ancestor of Node in a given Tree
+- Basically we are given a Root node and data value for which we would like to print the Ancestors.
+
+```JAVA
+PrintAncestor.java
+```
+
+### Checkout if one tree is the Subtree of the other tree
+- I think it could be a Generla version of finding if two tree is identical.
