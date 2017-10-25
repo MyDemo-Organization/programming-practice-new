@@ -150,3 +150,14 @@ PrintAncestor.java
 ```JAVA
 CheckIfSubtree.java
 ```
+
+### Connect at same level
+- Its is based on two simple logics;
+```java
+node.left.nextRight = node.right;
+node.right.nextRight = node.nextRight.left;
+```
+- File name is;
+```JAVA
+ConnectNodesAtSameLevel.java
+```
