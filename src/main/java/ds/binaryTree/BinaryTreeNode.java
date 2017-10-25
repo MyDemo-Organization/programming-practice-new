@@ -81,4 +81,9 @@ public class BinaryTreeNode {
         return root;
     }
 
+    // Time Complexity : O(1)
+    public boolean isLeaf() {
+        return left == null && right == null;
+    }
+
 }

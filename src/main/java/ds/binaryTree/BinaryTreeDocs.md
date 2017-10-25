@@ -101,6 +101,11 @@ lombok plugin to be installed into your IDES
 ## Solutions:
 
 ### Tree construction from the Traversal:
+- **Class**
+```JAVA
+CreateBinaryTreeFromTraversals.java
+```
+
 - we can build the tree from Traversal provided one of the Traversals is **in-order**
 - Build the tree using the inorder + Preorder Traversal.
 - Important facts:
@@ -116,3 +121,10 @@ lombok plugin to be installed into your IDES
     - find k => position of root in the InorderTraversal
     - create the left sub tree with indice i,k-1
     - create the right subtree with k+1,i
+
+
+### Max-width of a binary tree
+- By using modification of Level Order Traversal Using recursion:
+  - One would be to go for the level order traversal and for each print out and for a given order record the number of
+  prints which would present the number of elements present in that order.
+  - Keep doing this for each order until you get the max of all
