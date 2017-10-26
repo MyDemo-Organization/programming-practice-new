@@ -26,15 +26,39 @@ public class BinarySearchTree {
         return root;
     }
 
-    // Time Complexity : O(N/2)
+
+    // Time Complexity : O(log N)
+    public static BinaryTreeNode search(final BinaryTreeNode root, int searchData) {
+        // Base Case 1:
+        if (root == null){
+            return null;
+        }
+
+        // Base Case 2:
+        if (searchData == root.getData()) {
+            return root;
+        }
+
+        // Search in left subtree
+        if (searchData < root.getData()) {
+            return search(root.getLeft(), searchData);
+
+            // Search in right subtree
+        } else {
+            return search(root.getRight(), searchData);
+        }
+    }
+
+    // Time Complexity : O(log N)
     public static BinaryTreeNode createSampleBinarySearchTree() {
-        BinaryTreeNode root = new BinaryTreeNode(1);
+        BinaryTreeNode root = new BinaryTreeNode(4);
         root = insert(root, 2);
-        root = insert(root, 3);
-        root = insert(root, 4);
-        root = insert(root, 5);
         root = insert(root, 6);
+        root = insert(root, 1);
+        root = insert(root, 3);
+        root = insert(root, 5);
         root = insert(root, 7);
+        root.printTree();
         return root;
     }
 }

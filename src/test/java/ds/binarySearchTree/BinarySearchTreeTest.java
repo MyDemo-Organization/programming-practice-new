@@ -32,4 +32,14 @@ public class BinarySearchTreeTest {
         System.out.println();
     }
 
+    @Test
+    public void shouldSearchData() {
+        System.out.println("### Searching 1 ###");
+        System.out.println(BinarySearchTree.search(sampleBST, 1) != null);
+        System.out.println("### Searching 0 ###");
+        System.out.println(BinarySearchTree.search(sampleBST, 0) != null);
+        System.out.println("### Searching 8 ###");
+        System.out.println(BinarySearchTree.search(sampleBST, 7) != null);
+    }
+
 }
