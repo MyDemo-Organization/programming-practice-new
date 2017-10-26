@@ -5,12 +5,12 @@
   - Search a key
   - Insert a key
   - Min and max;
-    - InOrder Predecessor -> min
-    - InOrder Successor -> max
+    - InOrder Predecessor -> max in the left subtree (Right most node in the left subtree)
+    - InOrder Successor -> min in the right subtree (Left most Node in the right subtree)
   - **Delete a key** :small_red_triangle:
 3. Check if the given tree is BST
 4. Lowest Common Ancestor (LCA)
-5. K*th* Smallest element
+5. K*th* Smallest element :question:
 6. Merge two BST into a new BST
 7. Correct BST which has exactly one pair of values swapped
 8. Maths;
@@ -30,7 +30,7 @@
 ## Solutions
 
 ### Basic Operations: **BinarySearchTree.java**
-#### Insert
+#### Insert oe :smile:
 
 - Code: **BinarySearchTree.java**
 ```JAVA
@@ -51,7 +51,7 @@
     }
 ```
 
-#### Search (oe)
+#### Search (oe) :smile:
 - Code: **BinarySearchTree.java**
 ```java
     // Time Complexity : O(log N)
@@ -77,7 +77,7 @@
     }
 ```
 
-#### Min and Max (oe)
+#### Min and Max (oe) :smile:
 - Code: **BinarySearchTree.java**
 ```java
     // Time Complexity : O(log N)
@@ -216,5 +216,74 @@ public static BinaryTreeNode getLowestCommonAncestor(final BinaryTreeNode root,
     // means we are at LCA
     return root;
 }
-
 ```
+###  Merge two BST into a new BST (oe) :smile:
+- It looks we will keep traversing the one BST nodes and inserting it into the other BST
+- Looks O(N*log (M+N) Solution.
+- We have solved following two forms;
+  - Adding level-order traversal of the child BST into the parent BST;
+  ```JAVA
+    // Time Complexity : O(N * log (M + N)) (level Order)
+    public static BinaryTreeNode merge(BinaryTreeNode parentRoot, final BinaryTreeNode childTree ) {
+        // Base case 1: parent is null
+        if (parentRoot == null)
+            return childTree;
+
+        // Nase case 2: child is null
+        if (childTree == null)
+            return parentRoot;
+
+        // lets do a level order traversal of the child tree
+        final Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
+        queue.add(childTree);
+        BinaryTreeNode currentNode;
+        while (!queue.isEmpty()) {
+            currentNode = queue.poll();
+
+            // insert it into the other node
+            parentRoot = BinarySearchTree.insert(parentRoot, currentNode.getData());
+
+            if (currentNode.getLeft() != null) queue.add(currentNode.getLeft());
+            if (currentNode.getRight() != null) queue.add(currentNode.getRight());
+        }
+        return parentRoot;
+    }
+  ```
+  - Adding the in-order traversal into the parent BST.
+  ```java
+  public static BinaryTreeNode mergeInorder(BinaryTreeNode parentRoot, final BinaryTreeNode childTree) {
+        // Base case 1: parent is null
+        if (parentRoot == null)
+            return childTree;
+
+        // Base case 2: child is null
+        if (childTree == null);
+
+        // lets do inorder Traversal of the child Tree using the Stack
+        final Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+
+        BinaryTreeNode cn = childTree;
+
+        // STEP 1: Go to the first elemt of in order traversal i.e. Left most Node
+        while (cn != null) {
+            stack.push(cn);
+            cn = cn.getLeft();
+        }
+
+        while (!stack.isEmpty()) {
+            cn = stack.pop();
+
+            // insert this into the parent tree
+            parentRoot = BinarySearchTree.insert(parentRoot, cn.getData());
+
+            // go the in-order successor i.e left most Node in the right sub-tree
+            cn = cn.getRight();
+
+            while (cn != null) {
+                stack.push(cn);
+                cn = cn.getLeft();
+            }
+        }
+        return parentRoot;
+    }
+  ```
