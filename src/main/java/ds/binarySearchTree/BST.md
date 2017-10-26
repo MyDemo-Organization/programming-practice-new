@@ -51,7 +51,7 @@
     }
 ```
 
-### Search (oe)
+#### Search (oe)
 - Code: **BinarySearchTree.java**
 ```java
     // Time Complexity : O(log N)
@@ -77,7 +77,7 @@
     }
 ```
 
-### Min and Max (oe)
+#### Min and Max (oe)
 - Code: **BinarySearchTree.java**
 ```java
     // Time Complexity : O(log N)
@@ -97,4 +97,99 @@
     }
 ```
 
-### Delete a Node in a BST (:small_red_triangle:)
+#### Delete a Node in a BST (:small_red_triangle:)
+- Bu just reading the following cases, I did it on my own.
+- There are following three cases to be considered;
+1) Node to be deleted is leaf: Simply remove from the tree.
+
+              50                            50
+           /     \         delete(20)      /   \
+          30      70       --------->    30     70
+         /  \    /  \                     \    /  \
+       20   40  60   80                   40  60   80
+2) Node to be deleted has only one child: Copy the child to the node and delete the child
+
+              50                            50
+           /     \         delete(30)      /   \
+          30      70       --------->    40     70
+            \    /  \                          /  \
+            40  60   80                       60   80
+3) Node to be deleted has two children: Find inorder successor of the node. Copy contents of the inorder successor to the node and delete the inorder successor. Note that inorder predecessor can also be used.
+
+              50                            60
+           /     \         delete(50)      /   \
+          40      70       --------->    40    70
+                 /  \                            \
+                60   80                           80
+
+- Code:
+```java
+public static BinaryTreeNode delete(final BinaryTreeNode root, int deleteData) {
+        if (root == null) {
+            System.out.println("No data found in the Tree");
+            return root;
+        }
+
+        if (deleteData < root.getData()) {
+            root.setLeft(delete(root.getLeft(), deleteData));
+        } else if (deleteData > root.getData()) {
+            root.setRight(delete(root.getRight(), deleteData));
+        } else {
+            // here deleteData == root.getData()
+            // CASE 1
+            if (root.isLeaf()) {
+                return null;
+            } else
+
+            // CASE 2 only left or right child present
+            if (root.getLeft() == null) {
+                return root.getRight();
+            }
+
+            if (root.getRight() == null) {
+                return root.getLeft();
+            }
+
+            // CASE 3: Both the children present
+            // getInorder predecessor : i.e right most in left subtree
+            // or maximum in left subtree
+            final int inOrderPredecessor = getMax(root.getLeft()).getData();
+            root.setData(inOrderPredecessor);
+            root.setLeft(delete(root.getLeft(), inOrderPredecessor));
+
+        }
+        return root;
+    }
+```
+
+### Check if BST! oe :smile:
+- By just making sure that my current Node value is in the required range I can make sure that given Binary tree is a BST
+- Code: **CheckBST.java**
+```java
+    // assumes no duplicate data is present
+    // O(N)
+    public static boolean isBST(final BinaryTreeNode root) {
+        // Base Case
+        if (root == null) {
+            return true;
+        }
+        return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    // means between and including [minRange....MaxRange]
+    // O(N)
+    private static boolean isBSTUtil(final BinaryTreeNode node, int minRange, int maxRange) {
+        // Base Case 1
+        if (node == null) {
+            return true;
+        }
+
+        // Base case 2
+        if (node.getData() < minRange || node.getData() > maxRange) {
+            return false;
+        }
+
+        return isBSTUtil(node.getLeft(), minRange, node.getData() - 1) &&
+                isBSTUtil(node.getRight(), node.getData() + 1, maxRange);
+    }
+```
