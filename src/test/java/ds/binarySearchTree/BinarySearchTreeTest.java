@@ -42,4 +42,10 @@ public class BinarySearchTreeTest {
         System.out.println(BinarySearchTree.search(sampleBST, 7) != null);
     }
 
+    @Test
+    public void shouldGetMinMax() {
+        System.out.println("Min : " + BinarySearchTree.getMin(sampleBST));
+        System.out.println("Max : " + BinarySearchTree.getMax(sampleBST));
+    }
+
 }

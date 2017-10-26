@@ -50,6 +50,25 @@ public class BinarySearchTree {
     }
 
     // Time Complexity : O(log N)
+    // left most Node
+    public static BinaryTreeNode getMin(final BinaryTreeNode root) {
+        if (root == null || root.isLeaf())
+            return root;
+        return getMin(root.getLeft());
+    }
+
+    // Time Complexity : O(log N)
+    // right most node
+    public static BinaryTreeNode getMax(final BinaryTreeNode root) {
+        if (root == null || root.isLeaf())
+            return root;
+        return getMax(root.getRight());
+    }
+    /*public static BinaryTreeNode delete(final BinaryTreeNode root, int deleteData) {
+
+    }*/
+
+    // Time Complexity : O(log N)
     public static BinaryTreeNode createSampleBinarySearchTree() {
         BinaryTreeNode root = new BinaryTreeNode(4);
         root = insert(root, 2);
