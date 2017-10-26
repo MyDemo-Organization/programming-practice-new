@@ -146,7 +146,7 @@ PrintAncestor.java
 ```
 
 ### Checkout if one tree is the Subtree of the other tree
-- I think it could be a Generla version of finding if two tree is identical.
+- I think it could be a general version of finding if two tree is identical.
 ```JAVA
 CheckIfSubtree.java
 ```
