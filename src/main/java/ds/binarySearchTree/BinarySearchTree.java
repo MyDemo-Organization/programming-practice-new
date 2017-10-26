@@ -64,9 +64,45 @@ public class BinarySearchTree {
             return root;
         return getMax(root.getRight());
     }
-    /*public static BinaryTreeNode delete(final BinaryTreeNode root, int deleteData) {
 
-    }*/
+
+    // Time Complexity : O(log N)
+    public static BinaryTreeNode delete(final BinaryTreeNode root, int deleteData) {
+        if (root == null) {
+            System.out.println("No data found in the Tree");
+            return root;
+        }
+
+        if (deleteData < root.getData()) {
+            root.setLeft(delete(root.getLeft(), deleteData));
+        } else if (deleteData > root.getData()) {
+            root.setRight(delete(root.getRight(), deleteData));
+        } else {
+            // here deleteData == root.getData() i.e. we are at the Node which we have to delete
+            // CASE 1
+            if (root.isLeaf()) {
+                return null;
+            } else
+
+            // CASE 2 only left or right child present
+            if (root.getLeft() == null) {
+                return root.getRight();
+            }
+
+            if (root.getRight() == null) {
+                return root.getLeft();
+            }
+
+            // CASE 3: Both the children present
+            // getInorder predecessor : i.e right most in left subtree
+            // or maximum in left subtree
+            final int inOrderPredecessor = getMax(root.getLeft()).getData();
+            root.setData(inOrderPredecessor);
+            root.setLeft(delete(root.getLeft(), inOrderPredecessor));
+
+        }
+        return root;
+    }
 
     // Time Complexity : O(log N)
     public static BinaryTreeNode createSampleBinarySearchTree() {

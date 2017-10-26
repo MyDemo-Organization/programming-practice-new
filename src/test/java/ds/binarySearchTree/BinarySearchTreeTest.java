@@ -48,4 +48,16 @@ public class BinarySearchTreeTest {
         System.out.println("Max : " + BinarySearchTree.getMax(sampleBST));
     }
 
+    @Test
+    public void shouldDelete() {
+        System.out.println("Deleting 7 :");
+        BinarySearchTree.delete(sampleBST, 7).printTree();
+        System.out.println("Deleting 6 :");
+        BinarySearchTree.delete(sampleBST, 6).printTree();
+        System.out.println("Deleting 2 :");
+        BinarySearchTree.delete(sampleBST, 2).printTree();
+
+
+    }
+
 }

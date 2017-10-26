@@ -4,10 +4,10 @@
 1. Basic Operations;
   - Search a key
   - Insert a key
-  - **Delete a key**
-2. Min and max;
-  - InOrder Predecessor -> min
-  - InOrder Successor -> max
+  - Min and max;
+    - InOrder Predecessor -> min
+    - InOrder Successor -> max
+  - **Delete a key** :small_red_triangle:
 3. Check if the given tree is BST
 4. Lowest Common Ancestor (LCA)
 5. K*th* Smallest element
@@ -34,7 +34,7 @@
 
 - Code: **BinarySearchTree.java**
 ```JAVA
-// Time Complexity : O(log N)
+    // Time Complexity : O(log N)
     public static BinaryTreeNode insert(final BinaryTreeNode root, final int newData) {
         // BASE Case 1
         if (root == null) {
@@ -52,9 +52,9 @@
 ```
 
 ### Search (oe)
-- Code:
+- Code: **BinarySearchTree.java**
 ```java
-// Time Complexity : O(log N)
+    // Time Complexity : O(log N)
     public static BinaryTreeNode search(final BinaryTreeNode root, int searchData) {
         // Base Case 1:
         if (root == null){
@@ -76,3 +76,25 @@
         }
     }
 ```
+
+### Min and Max (oe)
+- Code: **BinarySearchTree.java**
+```java
+    // Time Complexity : O(log N)
+    // left most Node
+    public static BinaryTreeNode getMin(final BinaryTreeNode root) {
+        if (root == null || root.isLeaf())
+            return root;
+        return getMin(root.getLeft());
+    }
+
+    // Time Complexity : O(log N)
+    // right most node
+    public static BinaryTreeNode getMax(final BinaryTreeNode root) {
+        if (root == null || root.isLeaf())
+            return root;
+        return getMax(root.getRight());
+    }
+```
+
+### Delete a Node in a BST (:small_red_triangle:)
