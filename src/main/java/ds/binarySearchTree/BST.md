@@ -287,3 +287,96 @@ public static BinaryTreeNode getLowestCommonAncestor(final BinaryTreeNode root,
         return parentRoot;
     }
   ```
+
+
+## Two nodes of a BST are swapped, correct the BST
+1. The swapped nodes are not adjacent in the inorder traversal of the BST.
+```shell
+For example, Nodes 5 and 25 are swapped in {3 5 7 8 10 15 20 25}.
+The inorder traversal of the given tree is 3 25 7 8 10 15 20 5
+```
+2. The swapped nodes are adjacent in the inorder traversal of BST.
+```shell
+For example, Nodes 7 and 8 are swapped in {3 5 7 8 10 15 20 25}.
+The inorder traversal of the given tree is 3 5 8 7 10 15 20 25
+```
+
+- So the idea is *in-order traversal* of a BST is in ascending order
+- The point of swap would be the point where the next value is smaller than the previous value.
+- In the case of adjacent we will have only one place where this happens and in case of
+non-adjacent there would be two places where this happens.
+- We would be playing with these pointers;
+  - prev -> points to the previous node
+  - first -> points to the first swapped node (it would be the previous node and not current node which we are on!)
+  - middle -> points to the **first.next** node
+      - It would become the second swapped node in case of adjacent swap nodes
+  - last -> it is the second node which is being swapped.
+    - It would be the current node.
+
+
+
+```JAVA
+
+    // pointers to find the swapped location
+    private static BinaryTreeNode previous, first, middle, second;
+
+    // corrects the swapped Tree if any :)
+    public static BinaryTreeNode correctPairSwap(final BinaryTreeNode root) {
+        previous = first = middle = second = null;
+
+        // get the swapped location of the swapped nodes
+        findSwappedLocation(root);
+
+        // non-adjacent swap
+        if (first != null && second != null) {
+            swapNodes(first, second);
+        } else if (first != null && middle != null) {
+            swapNodes(first, second);
+        }
+
+        return root;
+
+    }
+
+    // assumption : There is exactly at most one pair swapped!!
+    // Time Complexity : O(N)
+    // Space Complexity : O(N)
+    private static void findSwappedLocation(final BinaryTreeNode currentNode) {
+        if (currentNode == null) {
+            return;
+        }
+
+        // in-order traversal of the left sub-tree
+        findSwappedLocation(currentNode.getLeft());
+
+        // check for the swapped location
+        if (previous != null &&
+                currentNode.getData() < previous.getData()) {
+
+            // check if this is the first occurrence
+            if (first == null) {
+                first = previous;
+                middle = currentNode;
+            } else {
+                // this is the second appearcne
+                second = currentNode;
+            }
+        }
+
+        // update the previous Node
+        previous = currentNode;
+
+        // in-order traversal of the right sub-tree
+        findSwappedLocation(currentNode.getRight());
+
+    }
+
+    // Time Complexity : O(1)
+    // swaps the contents of two nodes
+    private static void swapNodes(final BinaryTreeNode nodeOne, final BinaryTreeNode nodeTwo) {
+        final int temp = nodeOne.getData();
+        nodeOne.setData(nodeTwo.getData());
+        nodeTwo.setData(temp);
+    }
+
+    ```
