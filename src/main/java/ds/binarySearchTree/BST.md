@@ -8,23 +8,20 @@
     - InOrder Predecessor -> max in the left subtree (Right most node in the left subtree)
     - InOrder Successor -> min in the right subtree (Left most Node in the right subtree)
   - **Delete a key** :small_red_triangle:
-3. Check if the given tree is BST
-4. Lowest Common Ancestor (LCA)
-5. K*th* Smallest element :question:
-6. Merge two BST into a new BST
-7. Correct BST which has exactly one pair of values swapped :small_red_triangle:
-8. Maths;
-  - Floor
+2. Check if the given tree is BST
+3. Lowest Common Ancestor (LCA)
+4. Merge two BST into a new BST
+5. Correct BST which has exactly one pair of values swapped :small_red_triangle:
+6. Maths;
+  - Floor :small_red_triangle:
   - Ceil
-9. Conversions;
-  - in-place conversion of **Sorted DLL** to **Balanced BST**
-  - **Balanced BST** to sorted **DLL**
-  - Merge two **Balanced BST** into a new BST
+7. Conversions;
+  -  **Sorted DLL** to **Balanced BST** :small_red_triangle:
   - **Sorted Linked List** to **Balanced BST**
   - **Sorted Array** to **Balanced BST**
-10. Binary tree <=> BST
-  - **Binary Tree** to **BST**
-  - **BST** to **Balanced BST**
+8. Merge two **Balanced BST** into a new BST
+9. **Binary Tree** to **BST** (same structure)
+10. **BST** to **Balanced BST**
 
 
 ## Solutions
@@ -368,7 +365,6 @@ non-adjacent there would be two places where this happens.
 
         // in-order traversal of the right sub-tree
         findSwappedLocation(currentNode.getRight());
-
     }
 
     // Time Complexity : O(1)
@@ -450,3 +446,96 @@ non-adjacent there would be two places where this happens.
         }
     }
   ```
+
+
+## Conversions
+
+### Sorted LL to Balance BST:
+- Looks pretty easy; **BSTAndDLLConversion.java**
+
+```java
+private static LLNode sortedLinkedListHead;
+
+    // Time Complexity : O(N)
+    // Space Complexity : O(N)
+    public static BinaryTreeNode convertSortedLLToBalanceBST(LLNode head) {
+        sortedLinkedListHead = head;
+        // O(N)
+        final int length = LLNode.getLength(head);
+        // O(N)
+        return convertSortedLLToBalanceBSTUtil(0, length - 1);
+    }
+
+    private static BinaryTreeNode convertSortedLLToBalanceBSTUtil(final int start, final int end) {
+        if (start > end) {
+            return null;
+        }
+
+        final int m = (start + end) / 2;
+
+        final BinaryTreeNode leftSubtree = convertSortedLLToBalanceBSTUtil(start, m -1);
+        final BinaryTreeNode root = new BinaryTreeNode(sortedLinkedListHead.getData());
+        sortedLinkedListHead = sortedLinkedListHead.getNext();
+        final BinaryTreeNode rightSubtree = convertSortedLLToBalanceBSTUtil(m + 1, end);
+        root.setLeft(leftSubtree);
+        root.setRight(rightSubtree);
+        return root;
+    }
+
+    @Getter
+    @Setter
+    @RequiredArgsConstructor
+    public static class LLNode {
+        @NonNull
+        private int data;
+        private LLNode next;
+
+        public static int getLength(final LLNode root) {
+            if (root == null) return 0;
+            else return 1 + getLength(root.next);
+        }
+    }
+
+```
+
+### Sorted DLL to Balanced BST (oe) :smile:
+- same as above
+
+### Sorted Array to Balance BST (oe) :smile:
+- same as above
+
+
+## Merge two Balanced BSTs into the larger Balanced BSTs (oe) :smile:
+- Algorithm:
+```python
+// Time Complexity O(M+N)
+def mergeBalancedBSTs(bb1, bb2):
+  int[] a <- inOrder(bb1) // O(M) and would be Sorted
+  int[] b <- inOrder(bb2) // O(N) and would be Sorted
+  int[] c <- sortedMerge(a, b) // O(M+N) and would be Sorted
+  return convert c (i.e. sortede Array) to Balanaced BST // O(M+N)
+```
+
+## BST to Balance BST (oe) :smile:
+- Algorithm
+// Time Complexity O(N)
+// Space Complexity O(N)
+```python
+def convertBST2BalancedBST(bst):
+  int[] a <- inOrder(bst) // O(N) would be sorted array
+  return convert a (i.e. sortede Array) to Balanaced BST // O(N)
+```
+
+## Binary Tree to BST (Keeping the shape) (oe) :smile:
+- Algorithm:
+
+```python
+def binaryTree2BST(bt):
+  int[] a <- anyTraversal(bt) // O(N) unsorted
+  sort(a) <- O(n log n)
+
+  // make sure we have to keep the shape same
+  start the inOrderTraversal of the bt and start index = 0
+  keep updating the data of each node with a[index]
+  index++
+```

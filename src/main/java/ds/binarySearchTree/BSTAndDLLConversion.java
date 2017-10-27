@@ -14,7 +14,6 @@ import lombok.Setter;
  */
 public class BSTAndDLLConversion {
 
-    private static BinaryTreeNode bstRoot;
     private static DLLNode sortedDLLHead;
     private static LLNode sortedLinkedListHead;
     private static int sortedArrayIndex;
@@ -45,9 +44,13 @@ public class BSTAndDLLConversion {
     }
 
 
+    // Time Complexity : O(N)
+    // Space Complexity : O(N)
     public static BinaryTreeNode convertSortedLLToBalanceBST(LLNode head) {
         sortedLinkedListHead = head;
+        // O(N)
         final int length = LLNode.getLength(head);
+        // O(N)
         return convertSortedLLToBalanceBSTUtil(0, length - 1);
     }
 
