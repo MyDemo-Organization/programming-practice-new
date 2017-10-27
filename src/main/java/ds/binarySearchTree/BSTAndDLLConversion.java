@@ -19,14 +19,14 @@ public class BSTAndDLLConversion {
     private static LLNode sortedLinkedListHead;
     private static int[] sortedArray;
 
-    public static BinaryTreeNode convertSortedDLLToBalancedBST(DLLNode sortedDLLHead) {
-        sortedDLLHead = sortedDLLHead;
+    public static BinaryTreeNode convertSortedDLLToBalancedBST(DLLNode head) {
+        sortedDLLHead = head;
         final int length = DLLNode.getLength(sortedDLLHead);
         return convertSortedDLLToBalancedBSTUtil(0, length - 1);
     }
 
     // Bottom Up approach
-    public static BinaryTreeNode convertSortedDLLToBalancedBSTUtil(final int start, final int end) {
+    private static BinaryTreeNode convertSortedDLLToBalancedBSTUtil(final int start, final int end) {
 
         // Base case :)
         if (start < end) {
@@ -39,6 +39,29 @@ public class BSTAndDLLConversion {
         final BinaryTreeNode root = new BinaryTreeNode(sortedDLLHead.getData());
         sortedDLLHead = sortedDLLHead.getFront();
         final BinaryTreeNode rightSubtree = convertSortedDLLToBalancedBSTUtil(m + 1, end);
+        root.setLeft(leftSubtree);
+        root.setRight(rightSubtree);
+        return root;
+    }
+
+
+    public static BinaryTreeNode convertSortedLLToBalanceBST(LLNode head) {
+        sortedLinkedListHead = head;
+        final int length = LLNode.getLength(head);
+        return convertSortedLLToBalanceBSTUtil(0, length - 1);
+    }
+
+    private static BinaryTreeNode convertSortedLLToBalanceBSTUtil(final int start, final int end) {
+        if (start < end) {
+            return null;
+        }
+
+        final int m = (start + end) / 2;
+
+        final BinaryTreeNode leftSubtree = convertSortedLLToBalanceBSTUtil(start, m -1);
+        final BinaryTreeNode root = new BinaryTreeNode(sortedLinkedListHead.getData());
+        sortedLinkedListHead = sortedLinkedListHead.getNext();
+        final BinaryTreeNode rightSubtree = convertSortedLLToBalanceBSTUtil(m + 1, end);
         root.setLeft(leftSubtree);
         root.setRight(rightSubtree);
         return root;
