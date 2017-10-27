@@ -380,3 +380,7 @@ non-adjacent there would be two places where this happens.
     }
 
     ```
+
+## Mathemetical
+- **Floor** : Node with smallest data larger than or equal to key value
+- **Ceil** : Node with largest data smaller or equal to key value.
