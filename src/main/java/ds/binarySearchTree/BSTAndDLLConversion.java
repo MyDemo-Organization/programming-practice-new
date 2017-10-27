@@ -17,7 +17,7 @@ public class BSTAndDLLConversion {
     private static BinaryTreeNode bstRoot;
     private static DLLNode sortedDLLHead;
     private static LLNode sortedLinkedListHead;
-    private static int[] sortedArray;
+    private static int sortedArrayIndex;
 
     public static BinaryTreeNode convertSortedDLLToBalancedBST(DLLNode head) {
         sortedDLLHead = head;
@@ -29,7 +29,7 @@ public class BSTAndDLLConversion {
     private static BinaryTreeNode convertSortedDLLToBalancedBSTUtil(final int start, final int end) {
 
         // Base case :)
-        if (start < end) {
+        if (start > end) {
             return null;
         }
 
@@ -52,7 +52,7 @@ public class BSTAndDLLConversion {
     }
 
     private static BinaryTreeNode convertSortedLLToBalanceBSTUtil(final int start, final int end) {
-        if (start < end) {
+        if (start > end) {
             return null;
         }
 
@@ -67,6 +67,27 @@ public class BSTAndDLLConversion {
         return root;
     }
 
+    public static BinaryTreeNode convertSortedArrayToBalancedBST(int[] sortedArray) {
+        sortedArrayIndex = 0;
+        final int length = sortedArray.length;
+        return null;
+    }
+
+    public static BinaryTreeNode convertSortedArrayToBalancedBSTUtil(int[] sortedArray, final int start, final int end) {
+        // Base Case
+        if (start > end) {
+            return null;
+        }
+
+        final int m = (start + end) / 2;
+        final BinaryTreeNode leftSubTree = convertSortedArrayToBalancedBSTUtil(sortedArray, start, m -1);
+        final BinaryTreeNode root = new BinaryTreeNode(sortedArray[sortedArrayIndex]);
+        sortedArrayIndex++;
+        final BinaryTreeNode rightSubtree = convertSortedArrayToBalancedBSTUtil(sortedArray, m + 1, end);
+        root.setLeft(leftSubTree);
+        root.setRight(rightSubtree);
+        return root;
+    }
 
     @Getter
     @Setter
