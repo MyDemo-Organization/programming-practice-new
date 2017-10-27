@@ -12,13 +12,13 @@
 4. Lowest Common Ancestor (LCA)
 5. K*th* Smallest element :question:
 6. Merge two BST into a new BST
-7. Correct BST which has exactly one pair of values swapped
+7. Correct BST which has exactly one pair of values swapped :small_red_triangle:
 8. Maths;
   - Floor
   - Ceil
 9. Conversions;
-  - **BST** to sorted **DLL**
-  - **Sorted DLL** to **Balanced BST**
+  - in-place conversion of **Sorted DLL** to **Balanced BST**
+  - **Balanced BST** to sorted **DLL**
   - Merge two **Balanced BST** into a new BST
   - **Sorted Linked List** to **Balanced BST**
   - **Sorted Array** to **Balanced BST**
@@ -381,6 +381,72 @@ non-adjacent there would be two places where this happens.
 
     ```
 
-## Mathemetical
+## Mathemetical (oe) :smile: (pure solution by me)
 - **Floor** : Node with smallest data larger than or equal to key value
+  - This is my customized solution. I strongly recommend this.
+  ```JAVA
+  // Time Complexity : O(log N) of O(log h)
+    // Space Complexity : O(N)
+    public static Integer getFloor(final BinaryTreeNode root, final int number) {
+        System.out.println("### Getting floor for " + number);
+        return getFloorUtil(root, null, number);
+    }
+
+    // Time Complexity : O(log N) of O(log h)
+    // Space Complexity : O(N)
+    private static Integer getFloorUtil(final BinaryTreeNode root, Integer currentFloor, final int number) {
+
+        // Base case 1
+        if (root == null) {
+            return currentFloor;
+        }
+
+        // Base case 2
+        if (root.getData() == number) {
+            return number;
+
+            // Base case 3
+        } else if (root.getData() > number) {
+            return getFloorUtil(root.getLeft(), currentFloor, number);
+
+            // Base case 4 : root.getData < number
+        } else {
+            if (currentFloor == null) {
+                currentFloor = root.getData();
+            } else {
+                currentFloor = (currentFloor>=root.getData()?currentFloor:root.getData());
+            }
+            // any result better than this would be in the right subtree i.e. greater than current value
+            return getFloorUtil(root.getRight(), currentFloor, number);
+        }
+    }
+  ```
 - **Ceil** : Node with largest data smaller or equal to key value.
+  - Inspired by abpve solution;
+
+  ```JAVA
+  public static Integer getCeil(final BinaryTreeNode root, final int number) {
+        System.out.println("### Getting Ceil for " + number);
+        return getCeilUtil(root, null, number);
+    }
+
+    private static Integer getCeilUtil(final BinaryTreeNode root, Integer currentCeil, final int number) {
+        if (root == null) {
+            return currentCeil;
+        }
+
+        if (root.getData() == number) {
+            return number;
+        } else if (root.getData() < number) {
+            return getCeilUtil(root.getRight(), currentCeil, number);
+        } else {
+            if (currentCeil == null) {
+                currentCeil = root.getData();
+            } else {
+                currentCeil = (currentCeil <= root.getData()?currentCeil:root.getData());
+            }
+
+            return getCeilUtil(root.getLeft(), currentCeil, number);
+        }
+    }
+  ```
