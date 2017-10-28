@@ -1,7 +1,14 @@
 package ds.heap;
 
+import ds.binaryTree.BinaryTreeNode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
 
 /**
  * Problem Statement: ""
@@ -9,6 +16,7 @@ import lombok.NonNull;
  * @author Alimuddin Khan (aak5031@rit.edu)
  * @version on 10/27/17
  */
+@Slf4j
 @Getter
 public class MinHeap {
     private int[] heapArray;
@@ -33,7 +41,7 @@ public class MinHeap {
             throw new IllegalArgumentException("Heap is Empty!");
         }
 
-        final int lastElement = heapArray[size--];
+        final int lastElement = heapArray[size-1];
         final int minElement = heapArray[0];
         heapArray[0] = lastElement;
         minBubbleDown(0);
@@ -47,8 +55,8 @@ public class MinHeap {
         }
 
         heapArray[size] = key;
-        minBubbleUp(size);
-        size++;
+        size++; // we have added size here to make sure logic stays the correct
+        minBubbleUp(size - 1);
         return key;
     }
 
@@ -60,12 +68,11 @@ public class MinHeap {
         decreaseKey(index, Integer.MIN_VALUE);
 
         // now the value at the root is the value to be removed
-        minBubbleDown(0);
-        size--;
+        extractMin();
     }
 
     private void decreaseKey(final int index, final int smallerValue) {
-        if (heapArray[index] >= smallerValue) {
+        if (heapArray[index] <= smallerValue) {
             throw new IllegalArgumentException("Value passed is not smaller!");
         }
 
@@ -135,4 +142,57 @@ public class MinHeap {
         heapArray[secondIndex] = temp;
     }
 
+    // Time Complexity : O(N)
+    // Space Complexity : O(N)
+    private BinaryTreeNode getBinaryTree() {
+        if (size == 0) {
+            return null;
+        }
+
+        final BinaryTreeNode root = new BinaryTreeNode(heapArray[0]);
+
+        final Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
+        queue.add(root);
+
+        int currentIndex = 0;
+        currentIndex ++;
+        while (currentIndex < size && !queue.isEmpty()) {
+            int currentLevelSize = queue.size();
+
+            while (currentIndex < size && currentLevelSize > 0) {
+                final BinaryTreeNode currentNode = queue.poll();
+                if (currentIndex < size) {
+                    final BinaryTreeNode leftNode = new BinaryTreeNode(heapArray[currentIndex++]);
+                    currentNode.setLeft(leftNode);
+                    queue.add(leftNode);
+                }
+                if (currentIndex < size) {
+                    final BinaryTreeNode rightNode = new BinaryTreeNode(heapArray[currentIndex++]);
+                    currentNode.setRight(rightNode);
+                    queue.add(rightNode);
+                }
+            }
+        }
+        return root;
+    }
+
+    // creates a sample heap
+    public void createSampleHeap() {
+        Random random = new Random(909768973);
+        int i = 0;
+        while (i < capacity) {
+            final int randomNumber = random.nextInt(100);
+            System.out.println("Inserting " + randomNumber);
+            insertKey(randomNumber);
+            System.out.println("Heap after Insertion....");
+            System.out.println(this);
+            i++;
+        }
+    }
+
+    @Override
+    public String toString() {
+        getBinaryTree().printTree();
+        return ArrayUtils.toString(heapArray);
+    }
 }
