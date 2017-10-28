@@ -21,6 +21,58 @@ public class MinHeap {
         this.size = 0;
     }
 
+    public int getMin() {
+        if (size == 0) {
+            throw new IllegalArgumentException("Heap is Empty!");
+        }
+        return heapArray[0];
+    }
+
+    public int extractMin() {
+        if (size == 0) {
+            throw new IllegalArgumentException("Heap is Empty!");
+        }
+
+        final int lastElement = heapArray[size--];
+        final int minElement = heapArray[0];
+        heapArray[0] = lastElement;
+        minBubbleDown(0);
+        size--;
+        return minElement;
+    }
+
+    public int insertKey(final int key) {
+        if (size == capacity) {
+            throw new IllegalArgumentException("Heap is already full!");
+        }
+
+        heapArray[size] = key;
+        minBubbleUp(size);
+        size++;
+        return key;
+    }
+
+    public void deleteKey(final int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index not valid!");
+        }
+
+        decreaseKey(index, Integer.MIN_VALUE);
+
+        // now the value at the root is the value to be removed
+        minBubbleDown(0);
+        size--;
+    }
+
+    private void decreaseKey(final int index, final int smallerValue) {
+        if (heapArray[index] >= smallerValue) {
+            throw new IllegalArgumentException("Value passed is not smaller!");
+        }
+
+        heapArray[index] = smallerValue;
+        minBubbleUp(index);
+    }
+
     // Time Complexity : O(log N)
     private void minBubbleDown(final int index) {
         // base case
