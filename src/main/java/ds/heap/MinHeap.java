@@ -16,7 +16,6 @@ import java.util.Random;
  * @author Alimuddin Khan (aak5031@rit.edu)
  * @version on 10/27/17
  */
-@Slf4j
 @Getter
 public class MinHeap {
     private int[] heapArray;

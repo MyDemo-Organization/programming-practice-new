@@ -8,11 +8,12 @@
     - Cases where BST is preferred over Heap?
   - Why preferred Implementation of Priority Queue?
 - Heap Sort
-- Sorting a k-sorted Array
+- Sorting an almost sorted array (k-sorted array)  :small_red_triangle:
 - Create a Binary tree from heap array :). Requested by me :)
 
 
 ## 1. Heap Implementation:
+- **code** : `MinHeap.java`
 - **Introduction** (MinHeap)
     - It is Binary tree having following properties;
       - Its a **complete binary tree**
@@ -44,6 +45,42 @@
         - Will use *decreaseKey()* and *extractMin()*.
 
 
+## 3. Sorting an almost sorted array (k-sorted array)
+- Code: `SortTheAlmostSortedArray.java`
+- Given an array of n elements, where each element is at most k away from its target position, devise an algorithm that sorts in O(n log k) time.
+- For example, let us consider k is 2, an element at index 7 in the sorted array, can be at indexes 5, 6, 7, 8, 9 in the given array.
+- Idea is pretty simple use a k sized Heap :) thats it :)
+
+```JAVA
+    // Time Complexity : O(N log k)
+    // Space Complexity : O(K)
+    public static void sortKSortedArray(final int[] kSortedArray,final int k) {
+
+        // base case
+        if (k < 2 || k >= kSortedArray.length) {
+            return;
+        }
+
+        // STEP 1: create the heap with the k
+        final MinHeap minHeap = new MinHeap(k);
+        for (int i = 0; i < k; i++) {
+            minHeap.insertKey(kSortedArray[i]);
+        }
+
+        // STEP 2: keep on removing the min element and keep addin the one more element
+        for (int i = 0; i < kSortedArray.length - k; i++) {
+            final int temp = kSortedArray[i+k];
+            kSortedArray[i] = minHeap.extractMin();
+            minHeap.insertKey(temp);
+        }
+
+        // STEP 3: remove the remaining elements from the heap
+        for (int i = kSortedArray.length - k; i < kSortedArray.length; i++) {
+            kSortedArray[i] = minHeap.extractMin();
+
+        }
+    }
+```
 
 ## 4. Create a Binary tree from heap array :). Requested by me.
 
