@@ -93,6 +93,7 @@
 
 ## Merge Sort
 - Time complexity
+
 | Best Case     | Worst Case     |
 | :------------- | :------------- |
 | O(N log N) | O(N log N) |
