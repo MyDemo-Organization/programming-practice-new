@@ -17,4 +17,10 @@ public class Functions {
         }
         return a;
     }
+
+    public static void swap(final int[] a, final int indexOne, final int indexTwo) {
+        final int temp = a[indexOne];
+        a[indexOne] = a[indexTwo];
+        a[indexTwo] = temp;
+    }
 }
