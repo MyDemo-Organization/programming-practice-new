@@ -56,3 +56,12 @@
         insertKey(a, currentIndex - 1, key);
     }
 ```
+
+### Selection Sort
+
+| Best Case     | Worst Case     |
+| :------------- | :------------- |
+| O(N^2) | O(N^2) |
+
+- Idea is to select the minimum of all in the unsorted portion of the array and put it in the sorted portion of the array.
+- It is going to have the same time complexity no matter if the array is sorted or not.
