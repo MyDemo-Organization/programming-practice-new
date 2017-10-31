@@ -44,4 +44,34 @@ public class GraphDFSTraversal {
             }
         }
     }
+
+    public static void recursiveDFS(final LinkedList<Integer>[] adjList) {
+        final boolean[] isVisited = new boolean[adjList.length];
+        Arrays.fill(isVisited, false);
+
+        System.out.println("### BFS TRAVERSAL ###");
+        for (int i = 0; i < adjList.length; i++) {
+            if (!isVisited[i]) {
+                recursiveDFSUtil(i, isVisited, adjList);
+            }
+        }
+
+    }
+
+    private static void recursiveDFSUtil(final int u,
+                                         final boolean[] isVisited,
+                                         final LinkedList<Integer>[] adjList) {
+        isVisited[u] = true;
+        System.out.printf("%4d", u);
+
+        for (final int nbr : adjList[u]) {
+            if (!isVisited[nbr]) {
+                // recursively visit the nbrs first
+                recursiveDFSUtil(nbr, isVisited, adjList);
+            }
+        }
+
+        // System.out.printf("%4d", u);
+
+    }
 }

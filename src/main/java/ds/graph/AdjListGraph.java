@@ -22,7 +22,6 @@ public class AdjListGraph {
     public static AdjListGraph getSampleGraph() {
         // lets create the Graph
         AdjListGraph basicGraph = new AdjListGraph(5);
-        System.out.println(basicGraph);
 
         // add al the edges
         basicGraph.addEdge(0,1);
@@ -35,6 +34,21 @@ public class AdjListGraph {
 
         System.out.println(basicGraph);
         return basicGraph;
+    }
+
+    public static AdjListGraph getLoopGraph() {
+        // lets create the Graph
+        AdjListGraph g = new AdjListGraph(5);
+
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+        System.out.println(g);
+        return g;
     }
 
     public AdjListGraph(int v) {

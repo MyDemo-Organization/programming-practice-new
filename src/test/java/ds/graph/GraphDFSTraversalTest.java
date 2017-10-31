@@ -18,4 +18,9 @@ public class GraphDFSTraversalTest {
     public void testBasicDFS() {
         GraphDFSTraversal.basicDFS(graph.getAdjLists());
     }
+
+    @Test
+    public void shouldDoRecursiveDFS() {
+        GraphDFSTraversal.recursiveDFS(graph.getAdjLists());
+    }
 }
