@@ -11,13 +11,11 @@ import org.mockito.runners.MockitoJUnitRunner;
  * @version on 10/30/17
  */
 @RunWith(MockitoJUnitRunner.class)
-public class BFSTraversalTest {
-
-    private static AdjListGraph graph = AdjListGraph.getSampleGraph();
+public class GraphDFSTraversalTest {
+    private final AdjListGraph graph = AdjListGraph.getSampleGraph();
 
     @Test
-    public void shouldPerformGraphDFS() {
-        BFSTraversal.bfs(graph.getAdjLists());
+    public void testBasicDFS() {
+        GraphDFSTraversal.basicDFS(graph.getAdjLists());
     }
-
 }
