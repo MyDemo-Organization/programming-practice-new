@@ -18,6 +18,7 @@
   - Longest Path in a Directed Acyclic Graph DA :white_check_mark:
   - Find if there is a path between two vertices in a directed graph :white_check_mark:
 6. Snake and Ladder Problem
+7. Number of islands http://www.geeksforgeeks.org/find-number-of-islands/
 7. Boggle (Find all possible words in a board of characters)
 8. Assign directions to edges so that the directed graph remains acyclic :x:
 9.  No of triangles:
@@ -36,6 +37,7 @@
 ## Backtracking
 - Rat in a Maze
 - Find if there is a path of more than k length from a source
+  - **NOTE**: If we ignore the weight then we can solve it using the BFS or DFS and using the distance array. :)
 
 
 
@@ -97,3 +99,19 @@
 - MyApproach:
   - Simply look for the DFS or BFS and if the destination is reached return true else false;
   - I would go for DFS
+
+
+### 5. Misc:
+
+### 5. (a) Snake and Ladder
+**Problem Statement** : Given a snake and ladder board, find the **minimum number of dice throws** required to reach the destination or last cell from source or 1st cell. Basically, the player has total control over outcome of dice throw and wants to find out minimum number of throws required to reach last cell.
+- [g4g link](http://www.geeksforgeeks.org/snake-ladder-problem-2/)
+
+**Aproach**
+- The idea is to consider the given snake and ladder board as a *directed graph* with
+  - **number of vertices** equal to the number of cells in the board.
+  - The problem reduces to finding the shortest path in a graph.
+  - Edges :
+    - Every vertex of the graph has an edge to next six vertices if next 6 vertices do not have a snake or ladder.
+    - If any of the next six vertices has a snake or ladder, then the edge from current vertex goes to the **top of the ladder or tail of the snake**.
+  - Could be easily solved using the **Standard BFS**.
