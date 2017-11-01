@@ -23,11 +23,16 @@ public class CycleDetectionDirectedGraph {
         boolean isCyclic = false;
         for (int i = 0; i < adjList.length && !isCyclic; i++) {
             if (!isVisited[i]) {
-                isCyclic =  isCyclicDirectedUtil(adjList, isVisited, recursiveStack, i);
+                // NOTE: This if is very very imp.
+                // don;t directly return false from here itslef. We are returning only if it is true
+                // consider this as the breaking condtion
+                if(isCyclicDirectedUtil(adjList, isVisited, recursiveStack, i) == true) {
+                    return true;
+                }
             }
         }
 
-        return isCyclic;
+        return false;
     }
 
     // we are using standard DFS and hence it has Time Complexity : O(N) and

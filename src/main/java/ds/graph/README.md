@@ -53,3 +53,20 @@
 - For an **unweighted graph**, DFS traversal of the graph produces;
   - the minimum spanning tree and
   - all pair shortest path tree
+
+
+## 3. Cycles
+### 3. (a) Detecting cycle in a directed graph
+- This is simple. We just have to store the **recursive stack** for the vertices which haven't been yet visited completely.
+- Add them into the stack at the beginning of the visit and remove them at the end of the visit.
+
+
+### 3. (a)  Detecting cycle in a Undirected graph
+- This is quiet tricky because you can not say that a Vertex in the stack is visited again would make a cycle, bacause there is a **back_edge** for each edge.
+- The idea here is;
+  - *For every visited vertex ‘v’, if there is an adjacent ‘u’ such that u is already visited and u is not parent of v, then there is a cycle in graph. If we don’t find such an adjacent for any vertex, we say that there is no cycle.*
+- Here in the util method we would be passing the parameter called as
+    ```java
+    int parent
+    ```
+- This would be the parent of the given node to be visited (default value would be -1 for starting and unconnected nodes).

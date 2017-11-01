@@ -50,6 +50,31 @@ public class AdjListGraph {
         return g;
     }
 
+    public static AdjListGraph getUndirectedGraphWithCycle() {
+        // lets create the Graph
+        AdjListGraph g = new AdjListGraph(5);
+
+        g.addUndirectedEdge(1, 0);
+        g.addUndirectedEdge(0, 2);
+        g.addUndirectedEdge(2, 0);
+        g.addUndirectedEdge(0, 3);
+        g.addUndirectedEdge(3, 4);
+
+        System.out.println(g);
+        return g;
+    }
+
+    public static AdjListGraph getUndirectedGraphWithoutCycle() {
+        // lets create the Graph
+        AdjListGraph g = new AdjListGraph(3);
+
+            g.addUndirectedEdge(0, 1);
+            g.addUndirectedEdge(1, 2);
+
+        System.out.println(g);
+        return g;
+    }
+
     public AdjListGraph(int v) {
         V = v;
 
@@ -83,6 +108,19 @@ public class AdjListGraph {
 
         //  For un-directed graphs uncomment the following line
         // adjLists[dst].add(src);
+    }
+
+
+    public void addUndirectedEdge(final int src, final int dst){
+        if (src < 0 || src > this.V - 1 || dst < 0 || dst > this.V - 1){
+            System.out.println("ERROR: Invalid edge");
+            return;
+        }
+
+        // add src->dst
+        adjLists[src].add(dst);
+        // add dst->src
+         adjLists[dst].add(src);
     }
 
     @Override
