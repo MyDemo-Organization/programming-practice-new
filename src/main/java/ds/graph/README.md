@@ -14,18 +14,24 @@
   - Normal :white_check_mark:
   - Using Disjoint set (union & find) :x:
     - may not be doing
-5. Longest Path in a Directed Acyclic Graph DA :white_check_mark:
+5. Related to path measurements;
+  - Longest Path in a Directed Acyclic Graph DA :white_check_mark:
+  - Find if there is a path between two vertices in a directed graph :white_check_mark:
 6. Snake and Ladder Problem
 7. Boggle (Find all possible words in a board of characters)
 8. Assign directions to edges so that the directed graph remains acyclic :x:
-9. Kruskal's Minimum Spanning Tree (Greedy)
+9.  No of triangles:
+  - Number of triangles in an undirected Graph
+  - Number of triangles in directed and undirected Graph
+10. Mother of all vertices
 
-## Shortest Paths
+## Shortest Paths (READ ONLY)
 - Dijkstra’s shortest path algorithm
 - Printing paths in Dijsktra’s Algorithm
+- Kruskal's Minimum Spanning Tree (Greedy) (READ ONLY)
 
 ## Connectivity
-- Find if there is a path between two vertices in a directed graph
+- Find if there is a path between two vertices in a directed graph (Added to the Question 5)
 
 ## Backtracking
 - Rat in a Maze
@@ -85,3 +91,9 @@
   - FileName : **LongestPathDAG.java**
   - assumed the weight to be unity for each edge
   - to solve with the original weight we have to change the entire structure of the Graph that we have right now
+
+### 4 (b) Find if there is a path between two vertices in a directed graph :smile: oe
+- [g4g Link](http://www.geeksforgeeks.org/find-if-there-is-a-path-between-two-vertices-in-a-given-graph/)
+- MyApproach:
+  - Simply look for the DFS or BFS and if the destination is reached return true else false;
+  - I would go for DFS
