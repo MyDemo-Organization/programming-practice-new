@@ -101,7 +101,7 @@
   - I would go for DFS
 
 
-### 5. Misc:
+## 5. Misc:
 
 ### 5. (a) Snake and Ladder
 **Problem Statement** : Given a snake and ladder board, find the **minimum number of dice throws** required to reach the destination or last cell from source or 1st cell. Basically, the player has total control over outcome of dice throw and wants to find out minimum number of throws required to reach last cell.
@@ -115,3 +115,17 @@
     - Every vertex of the graph has an edge to next six vertices if next 6 vertices do not have a snake or ladder.
     - If any of the next six vertices has a snake or ladder, then the edge from current vertex goes to the **top of the ladder or tail of the snake**.
   - Could be easily solved using the **Standard BFS**.
+
+### 5(b) Number of islands:
+- **Problem Statement**: Given a boolean 2D matrix, find the number of islands. A group of connected 1s forms an island. For example, the below matrix contains 5 islands
+```shell
+Input : mat[][] = {{1, 1, 0, 0, 0},
+                   {0, 1, 0, 0, 1},
+                   {1, 0, 0, 1, 1},
+                   {0, 0, 0, 0, 0},
+                   {1, 0, 1, 0, 1}
+Output : 5
+```
+- **My Aproach**
+  - Keep track of the isVisited 2D array and do a bfs visit.
+  - each time you return increase the number of islands.
