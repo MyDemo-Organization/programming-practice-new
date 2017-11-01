@@ -17,8 +17,8 @@
 5. Related to path measurements;
   - Longest Path in a Directed Acyclic Graph DA :white_check_mark:
   - Find if there is a path between two vertices in a directed graph :white_check_mark:
-6. Snake and Ladder Problem
-7. Number of islands http://www.geeksforgeeks.org/find-number-of-islands/
+6. Snake and Ladder Problem :white_check_mark: oe
+7. Number of islands :white_check_mark: oe http://www.geeksforgeeks.org/find-number-of-islands/
 7. Boggle (Find all possible words in a board of characters)
 8. Assign directions to edges so that the directed graph remains acyclic :x:
 9.  No of triangles:
@@ -35,7 +35,7 @@
 - Find if there is a path between two vertices in a directed graph (Added to the Question 5)
 
 ## Backtracking
-- Rat in a Maze
+- Rat in a Maze :smile: :white_check_mark: oe
 - Find if there is a path of more than k length from a source
   - **NOTE**: If we ignore the weight then we can solve it using the BFS or DFS and using the distance array. :)
 
@@ -129,3 +129,14 @@ Output : 5
 - **My Aproach**
   - Keep track of the isVisited 2D array and do a bfs visit.
   - each time you return increase the number of islands.
+  - :smile: oe
+
+### 5(c) Rat in a Maze :smile: oe
+- **Program File** : RatInAMaze.java
+- A Maze is given as N*N binary matrix of blocks where;
+  - source block is the upper left most block i.e., maze[0][0] and
+  - destination block is lower rightmost block i.e., maze[N-1][N-1].
+  - A rat starts from source and has to reach destination.
+  - The rat can move only in two directions: forward and down.
+- We have to print the entire path which would also be a 2D matrix
+- My plan is to use the isVisited 2D matrix as well :)
