@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class GraphDFSTraversalTest {
-    private final AdjListGraph graph = AdjListGraph.getSampleGraph();
+    private final AdjListGraph graph = AdjListGraph.getDirectedGraphWithoutCycle();
 
     @Test
     public void testBasicDFS() {

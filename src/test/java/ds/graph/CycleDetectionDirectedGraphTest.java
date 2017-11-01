@@ -15,10 +15,10 @@ public class CycleDetectionDirectedGraphTest {
 
     @Test
     public void shouldDetectCycleInDirectedGraphUsingRecursion() {
-        final AdjListGraph nonCycleGraph = AdjListGraph.getSampleGraph();
+        final AdjListGraph nonCycleGraph = AdjListGraph.getDirectedGraphWithoutCycle();
         System.out.println("Is Cyclic : " + CycleDetectionDirectedGraph.isCyclicDirected(nonCycleGraph.getAdjLists()));
 
-        final AdjListGraph cyclicGraph = AdjListGraph.getLoopGraph();
+        final AdjListGraph cyclicGraph = AdjListGraph.getDirectedGraphWithCycle();
         System.out.println("Is Cyclic : " + CycleDetectionDirectedGraph.isCyclicDirected(cyclicGraph.getAdjLists()));
 
     }

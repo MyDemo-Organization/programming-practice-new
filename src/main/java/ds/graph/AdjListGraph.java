@@ -18,7 +18,7 @@ public class AdjListGraph {
     // Arrays of adjLists
     private LinkedList<Integer>[] adjLists;
 
-    public static AdjListGraph getSampleGraph() {
+    public static AdjListGraph getDirectedGraphWithoutCycle() {
         // lets create the Graph
         AdjListGraph basicGraph = new AdjListGraph(5);
 
@@ -35,7 +35,7 @@ public class AdjListGraph {
         return basicGraph;
     }
 
-    public static AdjListGraph getLoopGraph() {
+    public static AdjListGraph getDirectedGraphWithCycle() {
         // lets create the Graph
         AdjListGraph g = new AdjListGraph(5);
 

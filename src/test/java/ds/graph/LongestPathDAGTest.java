@@ -8,16 +8,14 @@ import org.mockito.runners.MockitoJUnitRunner;
  * Problem Statement: ""
  *
  * @author Alimuddin Khan (aak5031@rit.edu)
- * @version on 10/30/17
+ * @version on 10/31/17
  */
 @RunWith(MockitoJUnitRunner.class)
-public class GraphBFSTraversalTest {
-
-    private static AdjListGraph graph = AdjListGraph.getDirectedGraphWithoutCycle();
+public class LongestPathDAGTest {
 
     @Test
-    public void shouldPerformGraphDFS() {
-        GraphBFSTraversal.basicBFS(graph.getAdjLists());
+    public void shouldFindLongestPath() {
+        final AdjListGraph dag = AdjListGraph.getDirectedGraphWithoutCycle();
+        LongestPathDAG.bfsModified(dag.getAdjLists());
     }
-
 }

@@ -2,22 +2,23 @@
 
 ## Problems
 
-1. BFS
+1. BFS :white_check_mark:
   - Using Queue (Basic BFS traversal)
   - Application
-2. DFS
+2. DFS :white_check_mark:
   - Using Stack (Basic DFS traversal)
   - Using Recursion (outputs may vary of both of the traversal)
   - Application
-3. Detect Cycle in a Directed Graph
+3. Detect Cycle in a Directed Graph :white_check_mark:
 4. Detect cycle in an undirected graph
-  - Normal
-  - Using Disjoint set (union & find)
-5. Longest Path in a Directed Acyclic Graph
+  - Normal :white_check_mark:
+  - Using Disjoint set (union & find) :x:
+    - may not be doing
+5. Longest Path in a Directed Acyclic Graph DA :white_check_mark:
 6. Snake and Ladder Problem
 7. Boggle (Find all possible words in a board of characters)
-8. Assign directions to edges so that the directed graph remains acyclic
-9. Kruskal's MST (Greedy)
+8. Assign directions to edges so that the directed graph remains acyclic :x:
+9. Kruskal's Minimum Spanning Tree (Greedy)
 
 ## Shortest Paths
 - Dijkstra’s shortest path algorithm
@@ -70,3 +71,17 @@
     int parent
     ```
 - This would be the parent of the given node to be visited (default value would be -1 for starting and unconnected nodes).
+
+## 4. Path Measurements
+
+### 4. (a) Find Longest Path in a Directed Acyclic Graph (DAG)
+- **Problem Statement** : Given a Weighted Directed Acyclic Graph (DAG) and a source vertex s in it, find the longest distances from s to all other vertices in the given graph.
+- **My Approach** :
+  - It looks we could run the BFS and keep a record of all the distances of all the vertices using a **distance array**.
+    - This would be an integer array where value of each index will show its distance from the start index.
+  - May be we can also use the **parentArray** to store the parent of all the vertices visited.
+    - For printing the path we could start from the destination and keep moving up till we reach the null parent for the source.
+- **Solution** :smile: oe
+  - FileName : **LongestPathDAG.java**
+  - assumed the weight to be unity for each edge
+  - to solve with the original weight we have to change the entire structure of the Graph that we have right now

@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class AdjGraphTest {
-    private final AdjListGraph graph = AdjListGraph.getSampleGraph();
+    private final AdjListGraph graph = AdjListGraph.getDirectedGraphWithoutCycle();
 
     @Test
     public void shouldCreateSampleGraph() {
