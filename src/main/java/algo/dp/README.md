@@ -30,9 +30,10 @@
 ## Solutions
 
 ### Edit Distance
-- Problem Statement:
+- **Problem Statement**:
   - We are given two strings and we have to find the minimum number of step in which one string can be converted into the other string.
   - Allowed operations are;
     - Insert : If Less
     - Remove : If more
     - Replace: If different simple
+  - Once you have the solution of recursive one you can use it to solve the DP one as well

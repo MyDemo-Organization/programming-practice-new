@@ -15,4 +15,11 @@ public class EditDistanceTest {
         assertEquals(8, EditDistance.getEditDistanceRec("", "saturday"));
         assertEquals(6, EditDistance.getEditDistanceRec("sunday", ""));
     }
+
+    @Test
+    public void shouldGetEditDistanceDP() {
+        assertEquals(3, EditDistance.getEditDistanceDP("sunday", "saturday"));
+        assertEquals(8, EditDistance.getEditDistanceDP("", "saturday"));
+        assertEquals(6, EditDistance.getEditDistanceDP("sunday", ""));
+    }
 }
