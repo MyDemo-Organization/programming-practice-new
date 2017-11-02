@@ -11,7 +11,7 @@
 - [Longest Palindromic Subsequence](http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/)
 - [Longest Common Subsequence](http://www.geeksforgeeks.org/longest-common-subsequence/)
 - [Maximum Sum Increasing sub sequence](http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/)
-- [Edit Distance](http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/)
+- [Edit Distance](http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/) :white_check_mark:
 - [Min Cost Path](http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/)
 - [Coin change](http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/)
 - [Matrix Chain Multiplication](http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/)
@@ -37,3 +37,11 @@
     - Remove : If more
     - Replace: If different simple
   - Once you have the solution of recursive one you can use it to solve the DP one as well
+
+## Subset Sum
+- **Problem Statement**:
+  - Given a set of **+ve integers** find out if there exists a set whose sum is equal to the target sum.
+  - So, input would be int[] -> set of +ve integers and
+  - targetSum
+- **Solution**:
+  - It is simple once consider it and other time don't consider it.
