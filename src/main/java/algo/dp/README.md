@@ -24,3 +24,15 @@
 - [Fibonacci](http://www.geeksforgeeks.org/program-for-nth-fibonacci-number/)
 - [Maximum sum rectangle in a 2D matrix](http://www.geeksforgeeks.org/dynamic-programming-set-27-max-sum-rectangle-in-a-2d-matrix/)
 - [number of ways to reach the given score in a game](http://www.geeksforgeeks.org/count-number-ways-reach-given-score-game/)
+
+
+
+## Solutions
+
+### Edit Distance
+- Problem Statement:
+  - We are given two strings and we have to find the minimum number of step in which one string can be converted into the other string.
+  - Allowed operations are;
+    - Insert : If Less
+    - Remove : If more
+    - Replace: If different simple
