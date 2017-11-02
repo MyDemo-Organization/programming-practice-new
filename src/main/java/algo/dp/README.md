@@ -17,8 +17,8 @@
 - [Matrix Chain Multiplication](http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/)
 - [Binomial Coefficient](http://www.geeksforgeeks.org/dynamic-programming-set-9-binomial-coefficient/)
   - OR nCr
-- [KnapSack Problem](http://www.geeksforgeeks.org/knapsack-problem/)
-- [Subset Sum Problem](http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/)
+- [KnapSack Problem](http://www.geeksforgeeks.org/knapsack-problem/) :white_check_mark:
+- [Subset Sum Problem](http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/) :white_check_mark:
 - [Egg Dropping Puzzle](http://www.geeksforgeeks.org/dynamic-programming-set-11-egg-dropping-puzzle/)
 - [Word Wrap](http://www.geeksforgeeks.org/dynamic-programming-set-18-word-wrap/)
 - [Fibonacci](http://www.geeksforgeeks.org/program-for-nth-fibonacci-number/)
@@ -57,3 +57,10 @@
   - **Columns** : indices of the set i.e. a[column] => value of the element in the set at the index equal to column.
   - **dimensions** : ( targetSum + 1 ) x (setSize)
     - +1 to count for the zero target sum
+
+
+## 0-1 KnapScak
+- Same As Subset Just one condition change :)
+- o.e.
+- Used the same structure as the subset sum dp
+  - Use my solutions only and don;t go for the g4g solution

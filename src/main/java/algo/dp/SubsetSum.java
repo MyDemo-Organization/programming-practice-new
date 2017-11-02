@@ -2,6 +2,7 @@ package algo.dp;
 
 public class SubsetSum {
 
+    // TC = (targetSum x N) pseudo polynomial
     public static boolean isSubsetPresentDP(final int[] set, final int sum) {
 
         // base case
@@ -86,6 +87,10 @@ public class SubsetSum {
         //base case 2
         if (currentIndex < 0 ) {
             return false;
+        }
+
+        if (set[currentIndex] > targetSum) {
+            return isSubsetPresentUtilRec(set, targetSum, currentIndex -1);
         }
 
         // we can add one more condition here to optimize it by excluding the elements
