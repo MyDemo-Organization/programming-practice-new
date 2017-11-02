@@ -38,6 +38,10 @@
     - Replace: If different simple
   - Once you have the solution of recursive one you can use it to solve the DP one as well
 
+- **DP matrix explanation:**
+  - Rows and columns represent one string each :)
+  - dimensions : [str.length + 1][str.length + 1]
+
 ## Subset Sum
 - **Problem Statement**:
   - Given a set of **+ve integers** find out if there exists a set whose sum is equal to the target sum.
@@ -45,3 +49,11 @@
   - targetSum
 - **Solution**:
   - It is simple once consider it and other time don't consider it.
+
+- **DP matrix explanation*:
+  - **Rows** : Target Sum
+    - First row would be zero and means target sum of zero
+      - means a[0][j] would be true no matter what
+  - **Columns** : indices of the set i.e. a[column] => value of the element in the set at the index equal to column.
+  - **dimensions** : ( targetSum + 1 ) x (setSize)
+    - +1 to count for the zero target sum
