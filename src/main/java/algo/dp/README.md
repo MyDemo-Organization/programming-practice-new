@@ -12,9 +12,9 @@
 - [Longest Common Subsequence](http://www.geeksforgeeks.org/longest-common-subsequence/)
 - [Maximum Sum Increasing sub sequence](http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/)
 - [Edit Distance](http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/) :white_check_mark:
-- [Min Cost Path](http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/)
+- [Min Cost Path](http://www.geeksforgeeks.org/dy namic-programming-set-6-min-cost-path/)
 - [Coin change](http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/)
-- [Matrix Chain Multiplication](http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/)
+- [Matrix Chain Multiplication](http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/) :small_red_triangle: :white_check_mark:
 - [Binomial Coefficient](http://www.geeksforgeeks.org/dynamic-programming-set-9-binomial-coefficient/)
   - OR nCr
 - [KnapSack Problem](http://www.geeksforgeeks.org/knapsack-problem/) :white_check_mark:
@@ -64,3 +64,20 @@
 - o.e.
 - Used the same structure as the subset sum dp
   - Use my solutions only and don;t go for the g4g solution
+
+## Matrix Chain Multiplication:
+- The problem is not to multiply bu to check the order in which they should be multiplied so that the number of operations performed are minimal.
+- For example, suppose A is a 10 × 30 matrix, B is a 30 × 5 matrix, and C is a 5 × 60 matrix. Then,
+    ```shell
+    (AB)C = (10×30×5) + (10×5×60) = 1500 + 3000 = 4500 operations
+    A(BC) = (30×5×60) + (10×30×60) = 9000 + 18000 = 27000 operations.
+    ```
+- So final results are going to be the same and we are just trying to minimize the cost.
+- Just **memorize** the solution :smile:
+- Note:
+  - For dimension of the matrix we are given an array p[] where Matrix Ai has dimension p[i-1] x p[i] for i = 1..n
+  - SO for the dimension of 3 matrices we will have an array of size n = 4.
+  - or printing the parenthesization look for this g4g link [g4g](http://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/)
+  - This is also one reference [youtube link](https://www.youtube.com/watch?v=vgLJZMUfnsU)
+
+  - Number of rows and columns indicate the matrix index and 1,1  value in the matrix indicate cost of multiplying matrices from 1 to 1 which would 0 as we don't cost anything for multiplying with yourself.
