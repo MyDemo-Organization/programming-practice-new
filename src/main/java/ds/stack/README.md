@@ -34,3 +34,5 @@
 ### 3. Next greater element in an unsorted Array
 - My Solution is not based to stack but is based on DP
 - **code**: `NextGreaterElement.java`
+
+### 4. Check for balance parenthesis
