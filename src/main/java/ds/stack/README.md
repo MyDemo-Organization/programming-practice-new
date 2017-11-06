@@ -8,10 +8,10 @@
   - Stack using the queue!
 
 - Reverse a string using Stack :white_check_mark:
-- Recursive:
-  - Reverse a stack in-place
-  - Sort a stack in place
-- Next greater element in an unsorted Array
+- Recursive: :white_check_mark:
+  - Reverse a stack in-place :white_check_mark:
+  - Sort a stack in place :white_check_mark:
+- Next greater element in an unsorted Array :white_check_mark:
 - Check if an expression has balanced parenthesis
 - Expression evaluation
   - Infix to postfix
@@ -22,11 +22,15 @@
 ## Solution
 
 ### 1. Reverse a string using Stack
-- **code**: `ReverseString.java`
+- **code**: `ReverseString.java` o.e.
 
 ### 2. Recursive
 #### a. Reverse a stack in-place
-- **code**: `ReverseStack.java`
+- **code**: `ReverseStack.java` o.e.
 
 #### b. Sort a stack in-place
-- **code**: `SortStackInPlace.java`
+- **code**: `SortStackInPlace.java` o.e.
+
+### 3. Next greater element in an unsorted Array
+- My Solution is not based to stack but is based on DP
+- **code**: `NextGreaterElement.java`
