@@ -12,7 +12,7 @@
   - Reverse a stack in-place :white_check_mark:
   - Sort a stack in place :white_check_mark:
 - Next greater element in an unsorted Array :white_check_mark:
-- Check if an expression has balanced parenthesis
+- Check if an expression has balanced parenthesis :white_check_mark:
 - Expression evaluation
   - Infix to postfix
   - evaluate the postfix Expression
@@ -36,3 +36,9 @@
 - **code**: `NextGreaterElement.java`
 
 ### 4. Check for balance parenthesis
+- **code**: `BalancedParenthesis.java`
+
+### 5. Expression evaluation
+
+#### a. infix to postfix
+- **code**:`ExpressionEvaluation.java`
