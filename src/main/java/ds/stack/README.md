@@ -10,7 +10,7 @@
 - Reverse a string using Stack :white_check_mark:
 - Recursive:
   - Reverse a stack in-place
-  - Sort a stack
+  - Sort a stack in place
 - Next greater element in an unsorted Array
 - Check if an expression has balanced parenthesis
 - Expression evaluation
@@ -23,3 +23,10 @@
 
 ### 1. Reverse a string using Stack
 - **code**: `ReverseString.java`
+
+### 2. Recursive
+#### a. Reverse a stack in-place
+- **code**: `ReverseStack.java`
+
+#### b. Sort a stack in-place
+- **code**: `SortStackInPlace.java`
